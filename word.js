@@ -29,12 +29,13 @@ function Word(wrd) {  // format?
     };
 
     this.checkIfWordFound = function() {
-        if(this.letters.every(function(lttr) {
-            return lttr.appear === true;
-        })) {
-            this.wordFound = true;
-            return true;
+        var allFound = true;
+        for(var i = 0; i < this.letters.length; i++) {
+            if(this.letters[i].isShowing === false) {
+                allFound = false;
+            }
         }
+        return allFound;
     };
 
     this.renderWord = function() {
