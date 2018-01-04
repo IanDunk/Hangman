@@ -163,3 +163,6 @@ hangman.startGame();
 
 
 // How come changing this variables doesn't always seem to work? I needed to use game.something instead of this.something in a few circumstances.
+
+// Project dependencies for github?
+// .gitignore?
