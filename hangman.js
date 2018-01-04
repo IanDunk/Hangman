@@ -89,7 +89,7 @@ var hangman = {
                 }
             }
         }]).then(function (lttr) {
-            var letterGuessed = (lttr.letterGuess).toLowerCase(); // Change to uppercase later
+            var letterGuessed = (lttr.letterGuess).toUpperCase(); // Change to uppercase later
             var guessedAlready = false;
 
             // Checks if letter has been guessed already
@@ -119,7 +119,7 @@ var hangman = {
                     if (game.currentWord.checkIfWordFound()) {
                         console.log(game.currentWord.renderWord()); // or just this.currentWord?
                         console.log("\nCongrats, you win!\n");
-                        // this.startGame(); ?
+                        // game.startGame(); ?
                     } else {
                         console.log("Guesses left: " + game.guessesLeft);
 
@@ -147,3 +147,6 @@ var hangman = {
 
 // Initializing game
 hangman.startGame();
+
+
+// How come changing this variables doesn't always seem to work?
