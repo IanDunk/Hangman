@@ -4,7 +4,6 @@ var isLetter = require('is-letter');
 
 var Word = require("./word.js");
 var Words = require("./words.js");
-//var Word = require("./letter.js");
 
 var hangman = {
     wordBank: Words.newWord.wordList,
@@ -37,9 +36,7 @@ var hangman = {
         })
     },
 
-    newGame: function () { // BROKEN
-        //console.log("game started");
-        //var game = this;
+    newGame: function () {
         if (this.guessesLeft === 10) {  // DOESNT NEED CHECK HERE
             console.log("I bet you can't guess this delicious piece of nature!");
             console.log("####################");
@@ -52,10 +49,9 @@ var hangman = {
 
 
             // FOR TEST PURPOSES ONLY
-            var test = new Word(this.wordBank[randNum]); // making letters, not words?
+            var test = new Word(this.wordBank[randNum]);
             console.log(test);
-
-            console.log(test.checkIfWordFound()); // BROKEN
+            console.log(test.checkIfWordFound());
 
 
 
@@ -118,7 +114,7 @@ var hangman = {
                     console.log("\nNice guess!");
                     if (game.currentWord.checkIfWordFound()) {
                         console.log(game.currentWord.renderWord()); // or just this.currentWord?
-                        console.log("\nCongrats, you win!\n");
+                        // console.log("\nCongrats, you win!\n");
                         // game.startGame(); ?
                     } else {
                         console.log("Guesses left: " + game.guessesLeft);
@@ -131,11 +127,16 @@ var hangman = {
                     }
                 }
 
-                if(game.guessesLeft > 0 && game.currentWord.checkIfWordFound() === false) { // ITS RETURNING TRUE?
+                // Checks if game is over NEEDS TO BE MOVED
+                if(game.guessesLeft > 0 && game.currentWord.checkIfWordFound() === false) {
                     game.keepPromptingUser();
+                } else if(game.currentWord.checkIfWordFound()) {
+                    console.log("YOU WIN!");
+                    game.startGame();
                 } else {
                     console.log("\nGame over, you lose\n");
                     console.log("The word was: " + game.currentWord);
+                    game.startGame();
                 }
             } else {
                 console.log("\nYou already guessed that letter.\n");
@@ -149,4 +150,4 @@ var hangman = {
 hangman.startGame();
 
 
-// How come changing this variables doesn't always seem to work?
+// How come changing this variables doesn't always seem to work? I needed to use game.something instead of this.something in a few circumstances.
