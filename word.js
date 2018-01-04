@@ -1,14 +1,16 @@
 var Letter = require("./letter.js");
 
 function Word(wrd) {  // format?
+    var game = this;
+
     this.word = wrd;
     this.letters = [];
     this.wordFound = false;
 
     // Populate letters array with letter objects
     this.getLetters = function() {
-        for(var i = 0; i < this.word.length; i++) {
-            var newLetter = new Letter(this.word[i]);
+        for(var i = 0; i < game.word.length; i++) {
+            var newLetter = new Letter(game.word[i]);
             this.letters.push(newLetter);
         }
     };
@@ -38,7 +40,7 @@ function Word(wrd) {  // format?
     this.renderWord = function() {
         var display = "";
         
-        this.letters.forEach(function(lttr) {
+        game.letters.forEach(function(lttr) {
             var currentCharacter = lttr.renderLetter();
             display += currentCharacter;
         })

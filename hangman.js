@@ -1,12 +1,13 @@
 
 var inquirer = require("inquirer");
+var isLetter = require('is-letter');
 
 var Word = require("./word.js");
-var Game = require("./words.js");
-var Word = require("./letter.js");
+var Words = require("./words.js");
+//var Word = require("./letter.js");
 
 var hangman = {
-    wordBank: Game.newWord.wordList,
+    wordBank: Words.newWord.wordList,
     guessesLeft: 10,
     lettersGuessed: [],
     // display: Game.newWord.hangman;
@@ -36,28 +37,36 @@ var hangman = {
         })
     },
 
-    newGame: function () {
-        var game = this;
+    newGame: function () { // BROKEN
         //console.log("game started");
-        if (game.guessesLeft === 10) {  // DOESNT NEED CHECK HERE
+        //var game = this;
+        if (this.guessesLeft === 10) {  // DOESNT NEED CHECK HERE
             console.log("I bet you can't guess this delicious piece of nature!");
             console.log("####################");
 
-            var randNum = Math.floor(Math.random() * (game.wordBank.length - 1));
-            game.currentWord = new Word(game.wordBank[randNum]);
+            var randNum = Math.floor(Math.random() * (this.wordBank.length - 1));
+            this.currentWord = new Word(this.wordBank[randNum]);
+
+
+            // FOR TEST PURPOSES ONLY
+            var test = new Word(this.wordBank[randNum]); // making letters, not words?
+            console.log(test);
+
+
+
+
 
             // GETTING LETTERS CONSTRUCTORS FOR WORD CONSTRUCTOR
-            console.log(currentWord);
-            game.currentWord.getLetters();
+            this.currentWord.getLetters();
 
             // Logging first display
-            console.log(game.currentWord.renderWord());
+            console.log(this.currentWord.renderWord());
 
             // Begins the cycle of prompts until guessesLeft = 0
-            game.keepPromptingUser();
+            this.keepPromptingUser();
         } else {
-            game.guessesLeft = 10; // NEEDS TO BE MOVED
-            game.newGame();
+            this.guessesLeft = 10; // NEEDS TO BE MOVED
+            this.newGame();
         }
     },
 
