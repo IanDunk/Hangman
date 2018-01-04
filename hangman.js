@@ -101,40 +101,40 @@ var hangman = {
                 var isFound = game.currentWord.checkIfLetterFound(letterGuessed);
 
                 if (isFound === false) {
-                    console.log("Wrong answer");
+                    console.log("\nWrong answer");
                     game.guessesLeft--;
-                    console.log("Guesses left: " + guessesLeft);
+                    console.log("Guesses left: " + game.guessesLeft);
 
                     console.log("####################");
                     console.log(game.currentWord.renderWord());
                     console.log("####################");
 
-                    console.log("Letters guessed so far: " + game.lettersGuessed);
+                    console.log("Letters guessed so far: " + game.lettersGuessed + "\n");
                 } else {
-                    console.log("Nice guess!");
+                    console.log("\nNice guess!");
                     if (game.currentWord.checkIfWordFound()) {
                         console.log(game.currentWord.renderWord()); // or just this.currentWord?
-                        console.log("Congrats, you win!");
+                        console.log("\nCongrats, you win!\n");
                         // this.startGame(); ?
                     } else {
-                        console.log("Guesses left: " + guessesLeft);
+                        console.log("Guesses left: " + game.guessesLeft);
 
                         console.log("####################");
                         console.log(game.currentWord.renderWord());
                         console.log("####################");
 
-                        console.log("Letters guessed so far: " + game.lettersGuessed);
+                        console.log("Letters guessed so far: " + game.lettersGuessed + "\n");
                     }
                 }
 
                 if(game.guessesLeft > 0 && game.currentWord.checkIfWordFound === false) { // checkIfWordFound()?
                     game.keepPromptingUser;
                 } else {
-                    console.log("Game over, you lose");
+                    console.log("\nGame over, you lose\n");
                     console.log("The word was: " + game.currentWord);
                 }
             } else {
-                console.log("You already guessed that letter.");
+                console.log("\nYou already guessed that letter.\n");
                 game.keepPromptingUser();
             }
         });
