@@ -48,10 +48,14 @@ var hangman = {
             this.currentWord = new Word(this.wordBank[randNum]);
 
 
+
+
+
             // FOR TEST PURPOSES ONLY
             var test = new Word(this.wordBank[randNum]); // making letters, not words?
             console.log(test);
 
+            console.log(test.checkIfWordFound()); // BROKEN
 
 
 
@@ -127,8 +131,8 @@ var hangman = {
                     }
                 }
 
-                if(game.guessesLeft > 0 && game.currentWord.checkIfWordFound === false) { // checkIfWordFound()?
-                    game.keepPromptingUser;
+                if(game.guessesLeft > 0 && game.currentWord.checkIfWordFound() === false) { // ITS RETURNING TRUE?
+                    game.keepPromptingUser();
                 } else {
                     console.log("\nGame over, you lose\n");
                     console.log("The word was: " + game.currentWord);
