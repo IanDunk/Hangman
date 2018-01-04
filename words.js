@@ -1,4 +1,4 @@
-exports.newWord = { // CAPITALIZE ALL
+exports.newWord = {
     wordList: [
         "APPLE",
         "ARTICHOKE",
@@ -61,8 +61,5 @@ exports.newWord = { // CAPITALIZE ALL
         "WATERMELON",
         "YAM",
         "ZUCCHINI"
-    ], 
-    hangman: [
-        "hi"
     ]
 };

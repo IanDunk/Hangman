@@ -4,11 +4,13 @@ var Letter = function(lttr) {
 
     this.renderLetter = function() {
         
+        // Displays separation of words
         if(this.letter === " ") {
             this.isShowing = true;
             return " ";
         } 
         
+        // What character is returned depending if it has been guessed
         if(this.isShowing === false) {
             return "_";
         } else {
